@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.faixa-carousel {
+    width: 95%;           /* quase toda largura */
+    margin: 20px auto;    /* centraliza com margem */
+    height: 200px;        /* ~5cm */
+    overflow: hidden;
+    border-radius: 10px;
+    background: #4B0F1A /* ou #111, ou vinho escuro */
+}
+
+
+.faixa-carousel .carousel-inner,
+.faixa-carousel .carousel-item {
+    height: 100%;
+}
+
+.faixa-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;   /* 🔥 não corta */
+}
