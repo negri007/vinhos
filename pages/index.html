@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinhos d'Elite | Experiência Sommelier</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <div class="meta-info">Exclusividade em cada gota</div>
+            <div class="logo font-serif">Vinhos d'Elite<span class="logo-dot">.</span></div>
+            <div class="header-actions">
+                <button id="cartBtn" class="cart-btn">
+                    <span class="cart-label">Carrinho</span>
+                    <span id="cartCount" class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+        <nav class="nav-bar">
+            <div class="nav-container">
+                <div class="nav-item active" data-category="all">Todos</div>
+                <div class="nav-item" data-category="tinto">Tintos</div>
+                <div class="nav-item" data-category="branco">Brancos</div>
+                <div class="nav-item" data-category="rose">Rosés</div>
+                <div class="nav-item" data-category="espumante">Espumantes</div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="info-section">
+            <h1 id="watermarkText" class="watermark font-serif italic">Vinho</h1>
+            <div id="activeWineInfo" class="wine-content">
+                <span id="wineGenre" class="wine-genre">Reserva Especial</span>
+                <h2 id="wineName" class="wine-name font-serif italic"></h2>
+                <p id="wineDesc" class="wine-description"></p>
+                <div class="price-container font-serif">
+                    <span id="winePrice" class="price-value italic"></span>
+                    <span id="wineRegionLabel" class="region-label"></span>
+                </div>
+                <button id="addToAdega" class="btn-primary">Adicionar à Adega</button>
+            </div>
+        </section>
+
+        <section class="visual-section">
+            <div class="visual-accent"></div>
+            <div class="bottle-container">
+                <div class="bottle-frame">
+                    <img id="activeWinePhoto" src="" alt="Bottle" class="bottle-image">
+                    <div class="bottle-glare"></div>
+                </div>
+                <div class="tech-specs">
+                    <div class="spec-item">
+                        <span class="spec-title">Uva</span>
+                        <span id="wineGrape" class="spec-text font-serif italic"></span>
+                    </div>
+                    <div class="spec-divider"></div>
+                    <div class="spec-item">
+                        <span class="spec-title">Safra</span>
+                        <span id="wineYear" class="spec-text font-serif"></span>
+                    </div>
+                    <div class="spec-divider"></div>
+                    <div class="spec-item">
+                        <span class="spec-title">Região</span>
+                        <span id="wineRegion" class="spec-text font-serif"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-controls">
+                <div id="prevWine" class="nav-card">
+                    <span class="nav-dir">Anterior</span>
+                    <p id="prevWineName" class="nav-wine-name font-serif italic"></p>
+                </div>
+                <div id="nextWine" class="nav-card nav-current">
+                    <span class="nav-dir">Próximo</span>
+                    <p id="nextWineName" class="nav-wine-name font-serif italic"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h4 class="footer-logo font-serif italic">Vinhos d'Elite<span class="logo-dot">.</span></h4>
+                <p class="footer-desc">Desde 1924, buscamos a perfeição em cada gota, trazendo a alma das melhores vinícolas para sua adega particular.</p>
+            </div>
+            <div>
+                <h5 class="footer-title">Coleções</h5>
+                <ul class="footer-links">
+                    <li>Tintos da Terra</li>
+                    <li>Brancos de Altitude</li>
+                    <li>Rosés de Provence</li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="footer-title">Newsletter</h5>
+                <div class="footer-input-container">
+                    <input type="text" placeholder="SEU E-MAIL" class="footer-input">
+                    <button class="footer-btn">OK</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2024 Vinhos d'Elite</span>
+            <a href="about.html" style="color: inherit; text-decoration: none;">Sobre nós</a>
+            <span>Alta Gastronomia & Curadoria</span>
+        </div>
+    </footer>
+
+    <div id="cartOverlay" class="cart-overlay">
+        <aside class="cart-sidebar">
+            <div class="cart-header">
+                <h4 class="cart-title font-serif italic">Seu Pedido</h4>
+                <button id="closeCart" class="cart-close">×</button>
+            </div>
+            <div id="cartItems" class="cart-items">
+            </div>
+            <div class="cart-footer">
+                <div class="cart-subtotal">
+                    <span class="subtotal-label">Subtotal</span>
+                    <span id="cartTotal" class="subtotal-value font-serif italic text-brand-gold">R$ 0,00</span>
+                </div>
+                <button class="btn-primary cart-checkout-btn">Finalizar Pedido</button>
+            </div>
+        </aside>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="../constants.js"></script>
+    <script src="../utils/helpers.js"></script>
+    <script src="../modules/api.js"></script>
+    <script src="../modules/dom.js"></script>
+    <script src="../modules/events.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
