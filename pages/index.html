@@ -67,20 +67,61 @@
                         <span id="wineRegion" class="spec-text font-serif"></span>
                     </div>
                 </div>
-            </div>
-
-            <div class="nav-controls">
-                <div id="prevWine" class="nav-card">
-                    <span class="nav-dir">Anterior</span>
-                    <p id="prevWineName" class="nav-wine-name font-serif italic"></p>
-                </div>
-                <div id="nextWine" class="nav-card nav-current">
-                    <span class="nav-dir">Próximo</span>
-                    <p id="nextWineName" class="nav-wine-name font-serif italic"></p>
+                
+                <div class="nav-controls">
+                    <div id="prevWine" class="nav-card">
+                        <span class="nav-dir">Anterior</span>
+                        <p id="prevWineName" class="nav-wine-name font-serif italic"></p>
+                    </div>
+                    <div id="nextWine" class="nav-card nav-current">
+                        <span class="nav-dir">Próximo</span>
+                        <p id="nextWineName" class="nav-wine-name font-serif italic"></p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <section class="hero-carousel">
+        <div class="hero-slides">
+            <div class="hero-slide active">
+                <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&q=80&w=2000" alt="Vinho Fino" class="hero-img">
+                <div class="hero-overlay"></div>
+                <div class="hero-text">
+                    <span class="hero-subtitle italic font-serif">Curadoria Selecionada</span>
+                    <h2 class="hero-title font-serif italic">Momentos Inesquecíveis</h2>
+                    <p class="hero-description">Cada garrafa conta uma história. Finalize sua visita explorando nossa visão de excelência.</p>
+                </div>
+            </div>
+            <div class="hero-slide">
+                <img src="https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?auto=format&fit=crop&q=80&w=2000" alt="Vinhedos" class="hero-img">
+                <div class="hero-overlay"></div>
+                <div class="hero-text">
+                    <span class="hero-subtitle italic font-serif">Herança Familiar</span>
+                    <h2 class="hero-title font-serif italic">Tradição & Pureza</h2>
+                    <p class="hero-description">Desde 1924, produzindo vinhos que capturam a essência do terroir.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-nav">
+            <button id="heroPrev" class="hero-nav-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <button id="heroNext" class="hero-nav-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+        </div>
+        
+        <div id="heroIndicators" class="hero-indicators"></div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="testimonials-header text-center">
+            <h2 class="testimonials-title">Vozes da Elite</h2>
+        </div>
+        <div id="testimonialsContainer" class="testimonials-grid"></div>
+    </section>
 
     <footer class="footer">
         <div class="footer-inner">
@@ -124,9 +165,54 @@
                     <span class="subtotal-label">Subtotal</span>
                     <span id="cartTotal" class="subtotal-value font-serif italic text-brand-gold">R$ 0,00</span>
                 </div>
-                <button class="btn-primary cart-checkout-btn">Finalizar Pedido</button>
+                <button id="checkoutBtn" class="btn-primary cart-checkout-btn">Finalizar Pedido</button>
             </div>
         </aside>
+    </div>
+
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-content">
+            <div class="payment-header">
+                <h3 class="payment-title font-serif italic">Pagamento Seguro</h3>
+                <button id="closePayment" class="payment-close">&times;</button>
+            </div>
+            <div class="payment-body">
+                <div class="payment-tabs">
+                    <button class="payment-tab active" data-tab="card">CARTÃO</button>
+                    <button class="payment-tab" data-tab="pix">PIX</button>
+                </div>
+                <div id="cardPayment" class="payment-tab-content active">
+                    <div class="form-group">
+                        <label class="form-label">Nome no Cartão</label>
+                        <input type="text" class="payment-input" placeholder="NOME IMPRESSO">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Número do Cartão</label>
+                        <input type="text" class="payment-input" placeholder="0000 0000 0000 0000">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Validade</label>
+                            <input type="text" class="payment-input" placeholder="MM/AA">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">CVV</label>
+                            <input type="text" class="payment-input" placeholder="***">
+                        </div>
+                    </div>
+                </div>
+                <div id="pixPayment" class="payment-tab-content">
+                    <div class="pix-info text-center">
+                        <div class="qrcode-placeholder">
+                            <svg width="140" height="140" viewBox="0 0 24 24" fill="#d4af37"><path d="M3 11V3h8v8H3zm0 10v-8h8v8H3zm10-10V3h8v8h-8zm0 10v-8h8v8h-8zm-8-12h4V5H5v4zm0 10h4v-4H5v4zm10-10h4V5h-4v4zm1-3v1h1V6h-1zm-6 10h4v-4h-4v4z"/></svg>
+                        </div>
+                        <p class="pix-text">Aponte a câmera para o QR Code ou cole a chave abaixo.</p>
+                        <div class="pix-copy-box">00020126360014BR.GOV.BCB...</div>
+                    </div>
+                </div>
+                <button id="confirmPurchase" class="btn-primary confirm-btn">CONFIRMAR RESERVA</button>
+            </div>
+        </div>
     </div>
 
     <div id="toast" class="toast"></div>
@@ -136,6 +222,7 @@
     <script src="../modules/api.js"></script>
     <script src="../modules/dom.js"></script>
     <script src="../modules/events.js"></script>
+    <script src="../modules/carousel.js"></script>
     <script src="../assets/js/main.js"></script>
 </body>
 </html>
