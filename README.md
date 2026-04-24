@@ -1,23 +1,14 @@
 # 🍷 Site de Vinhos
 
-## 📌 Sobre o Projeto
+## 📌 Sobre
 
-Este projeto foi desenvolvido como parte da disciplina de Engenharia de Software, com o objetivo de criar um site simples para exibição de vinhos.
+Aplicação web simples que funciona como um catálogo de vinhos, exibindo nome, tipo e informações básicas.
 
-A aplicação funciona como um catálogo digital, onde os usuários podem visualizar diferentes vinhos e suas informações, como nome, tipo e outras características.
-
----
-
-## 🎯 Objetivo
-
-* Praticar conceitos de Engenharia de Software
-* Desenvolver uma aplicação web simples
-* Trabalhar com HTML, CSS e JavaScript
-* Utilizar Git e GitHub para versionamento
+**Público:** estudantes e iniciantes em desenvolvimento web.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Tecnologias
 
 * HTML
 * CSS
@@ -25,50 +16,60 @@ A aplicação funciona como um catálogo digital, onde os usuários podem visual
 
 ---
 
-## 🚀 Funcionalidades
+## ⚙️ Pré-requisitos
 
-* 📋 Exibição de vinhos
-* 🍇 Informações básicas sobre cada vinho
-* 🎨 Interface simples e organizada
+* Navegador web
+* (Opcional) Git
 
 ---
 
-## 💻 Como Executar
-
-### Clone o repositório:
+## 🚀 Como Executar
 
 ```bash
 git clone https://github.com/negri007/vinhos.git
-```
-
-### Acesse a pasta:
-
-```bash
 cd vinhos
 ```
 
-### Abra o arquivo:
-
-* `index.html` no navegador
+Abra o arquivo `index.html` no navegador.
 
 ---
 
-## 📖 Conceitos Aplicados
+## 📁 Estrutura
 
-* Estruturação de páginas web
-* Estilização com CSS
-* Manipulação com JavaScript
-* Organização de projeto simples
+```
+vinhos/
+├── index.html
+├── css/
+├── js/
+└── imagens/
+```
 
 ---
 
-## 👨‍💻 Autor
+## 🚀 Funcionalidades
 
-Projeto desenvolvido por **Vitória e Gabriel**
+* Listagem de vinhos
+* Informações básicas
+* Interface simples
+
+---
+
+## 🤝 Contribuição
+
+1. Crie uma branch (`git checkout -b feature`)
+2. Commit (`git commit -m "feat: ..."`)
+3. Push (`git push origin feature`)
+4. Abra um PR
+
+---
+
+## 👨‍💻 Autores
+
+Vitória e Gabriel
 Disciplina: Engenharia de Software
 
 ---
 
 ## 📄 Licença
 
-Este projeto foi desenvolvido para fins acadêmicos.
+Uso acadêmico (MIT).
