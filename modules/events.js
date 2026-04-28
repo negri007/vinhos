@@ -4,7 +4,9 @@ function setupEventListeners(callbacks) {
         onPrev, 
         onAddToCart, 
         onToggleCart, 
-        onFilter 
+        onFilter,
+        onCheckout,
+        onConfirmPurchase
     } = callbacks;
 
     document.getElementById('nextWine').addEventListener('click', onNext);
@@ -13,6 +15,24 @@ function setupEventListeners(callbacks) {
     
     document.getElementById('cartBtn').addEventListener('click', () => onToggleCart(true));
     document.getElementById('closeCart').addEventListener('click', () => onToggleCart(false));
+    
+    document.getElementById('checkoutBtn').addEventListener('click', onCheckout);
+    document.getElementById('closePayment').addEventListener('click', () => {
+        document.getElementById('paymentModal').classList.remove('active');
+    });
+
+    document.getElementById('confirmPurchase').addEventListener('click', onConfirmPurchase);
+
+    document.querySelectorAll('.payment-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.getAttribute('data-tab');
+            document.querySelectorAll('.payment-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.payment-tab-content').forEach(c => c.classList.remove('active'));
+            
+            tab.classList.add('active');
+            document.getElementById(`${target}Payment`).classList.add('active');
+        });
+    });
     
     elements.cartOverlay.addEventListener('click', (e) => {
         if (e.target === elements.cartOverlay) onToggleCart(false);

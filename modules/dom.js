@@ -88,3 +88,16 @@ function updateCartUI(cart, onRemove) {
     const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
     elements.cartTotal.textContent = formatPrice(total);
 }
+
+function renderTestimonials(testimonials) {
+    const container = document.getElementById('testimonialsContainer');
+    if (!container) return;
+    
+    container.innerHTML = testimonials.map(t => `
+        <div class="testimonial-card">
+            <p class="testimonial-text">"${t.text}"</p>
+            <h6 class="testimonial-author">${t.name}</h6>
+        </div>
+    `).join('');
+}
+
