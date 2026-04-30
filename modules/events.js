@@ -6,7 +6,8 @@ function setupEventListeners(callbacks) {
         onToggleCart, 
         onFilter,
         onCheckout,
-        onConfirmPurchase
+        onConfirmPurchase,
+        onSearch
     } = callbacks;
 
     document.getElementById('nextWine').addEventListener('click', onNext);
@@ -46,4 +47,36 @@ function setupEventListeners(callbacks) {
             onFilter(category);
         });
     });
+
+    const newsletterBtn = document.getElementById('newsletterBtn');
+    if (newsletterBtn) {
+        newsletterBtn.addEventListener('click', () => {
+            const input = document.querySelector('.footer-input');
+            if (input && input.value.includes('@')) {
+                showToast("Inscrição realizada com sucesso!");
+                input.value = '';
+            } else {
+                showToast("Por favor, insira um e-mail válido.");
+            }
+        });
+    }
+
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            if (query.length > 2) {
+                onSearch(query);
+            } else {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.classList.remove('active');
+            }
+        });
+    }
 }

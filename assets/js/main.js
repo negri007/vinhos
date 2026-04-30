@@ -5,6 +5,7 @@ let filteredWines = getWinesByCategory('all');
 function init() {
     refreshDisplay();
     renderTestimonials(testimonials);
+    renderFeaturedGrid(wines.slice(0, 3), (id) => addToCart(id));
     
     setupEventListeners({
         onNext: () => {
@@ -41,6 +42,17 @@ function init() {
             document.getElementById('paymentModal').classList.remove('active');
             cart = [];
             updateCartUI(cart, removeFromCart);
+        },
+        onSearch: (query) => {
+            const results = wines.filter(w => 
+                w.name.toLowerCase().includes(query) || 
+                w.category.toLowerCase().includes(query) ||
+                w.grape.toLowerCase().includes(query)
+            );
+            renderSearchResults(results, (id) => {
+                addToCart(id);
+                document.getElementById('searchInput').value = '';
+            });
         }
     });
 

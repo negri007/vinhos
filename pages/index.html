@@ -12,6 +12,10 @@
             <div class="meta-info">Exclusividade em cada gota</div>
             <div class="logo font-serif">Vinhos d'Elite<span class="logo-dot">.</span></div>
             <div class="header-actions">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="BUSCAR VINHO..." class="search-input">
+                    <div id="searchResults" class="search-results"></div>
+                </div>
                 <button id="cartBtn" class="cart-btn">
                     <span class="cart-label">Carrinho</span>
                     <span id="cartCount" class="cart-count">0</span>
@@ -48,7 +52,7 @@
             <div class="visual-accent"></div>
             <div class="bottle-container">
                 <div class="bottle-frame">
-                    <img id="activeWinePhoto" src="" alt="Bottle" class="bottle-image">
+                    <img id="activeWinePhoto" src="https://images.unsplash.com/photo-1553120158-621b1774650c?auto=format&fit=max&q=90&w=1200" alt="Bottle" class="bottle-image">
                     <div class="bottle-glare"></div>
                 </div>
                 <div class="tech-specs">
@@ -85,7 +89,7 @@
     <section class="hero-carousel">
         <div class="hero-slides">
             <div class="hero-slide active">
-                <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&q=80&w=2000" alt="Vinho Fino" class="hero-img">
+                <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=max&q=90&w=2000" alt="Vinho Fino" class="hero-img">
                 <div class="hero-overlay"></div>
                 <div class="hero-text">
                     <span class="hero-subtitle italic font-serif">Curadoria Selecionada</span>
@@ -94,7 +98,7 @@
                 </div>
             </div>
             <div class="hero-slide">
-                <img src="https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?auto=format&fit=crop&q=80&w=2000" alt="Vinhedos" class="hero-img">
+                <img src="https://images.unsplash.com/photo-1528823872057-9c018a7a7553?auto=format&fit=max&q=90&w=2000" alt="Vinhedos" class="hero-img">
                 <div class="hero-overlay"></div>
                 <div class="hero-text">
                     <span class="hero-subtitle italic font-serif">Herança Familiar</span>
@@ -114,6 +118,53 @@
         </div>
         
         <div id="heroIndicators" class="hero-indicators"></div>
+    </section>
+
+    <section id="featuredSection" class="section-padding">
+        <div class="container">
+            <div class="section-header-minimal">
+                <span class="eyebrow">A Coleção</span>
+                <h2 class="section-title-minimal font-serif italic">Curadoria de Elite</h2>
+            </div>
+            <div id="featuredGrid" class="featured-grid">
+                <!-- Populado via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section class="story-section section-padding">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content">
+                    <span class="eyebrow">Nossa Essência</span>
+                    <h2 class="section-title font-serif italic">Um Século de<br>Paixão & Vinhedos</h2>
+                    <p class="story-text">Fundada nas colinas de uma pequena província, a Vinhos d'Elite nasceu do sonho de preservar a pureza de cada colheita. Combinamos técnicas ancestrais com a precisão da sommelieria moderna.</p>
+                    <a href="about.html" class="link-minimal">CONHEÇA NOSSA HISTÓRIA</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience-section section-padding">
+        <div class="container">
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <span class="exp-number">01</span>
+                    <h4 class="experience-title font-serif">Degustação Privada</h4>
+                    <p class="experience-desc">Reserve uma noite exclusiva com nossos sommeliers em sua residência.</p>
+                </div>
+                <div class="experience-card">
+                    <span class="exp-number">02</span>
+                    <h4 class="experience-title font-serif">Visita aos Vinhedos</h4>
+                    <p class="experience-desc">Explore a origem de nossas uvas em tours guiados pelas nossas propriedades parcerias.</p>
+                </div>
+                <div class="experience-card">
+                    <span class="exp-number">03</span>
+                    <h4 class="experience-title font-serif">Eventos Corporativos</h4>
+                    <p class="experience-desc">Leve o requinte dos nossos melhores rótulos para o seu próximo evento de negócios.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section class="testimonials-section">
@@ -141,7 +192,7 @@
                 <h5 class="footer-title">Newsletter</h5>
                 <div class="footer-input-container">
                     <input type="text" placeholder="SEU E-MAIL" class="footer-input">
-                    <button class="footer-btn">OK</button>
+                    <button id="newsletterBtn" class="footer-btn">OK</button>
                 </div>
             </div>
         </div>

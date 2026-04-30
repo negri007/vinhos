@@ -15,7 +15,8 @@ const elements = {
     cartTotal: document.getElementById('cartTotal'),
     cartItemsContainer: document.getElementById('cartItems'),
     cartOverlay: document.getElementById('cartOverlay'),
-    navItems: document.querySelectorAll('.nav-item')
+    navItems: document.querySelectorAll('.nav-item'),
+    featuredGrid: document.getElementById('featuredGrid')
 };
 
 function renderFocusWine(wine, prevWine, nextWine) {
@@ -27,7 +28,10 @@ function renderFocusWine(wine, prevWine, nextWine) {
     activeInfo.style.opacity = '0';
     activePhoto.style.opacity = '0';
 
-    setTimeout(() => {
+    // Preload image
+    const img = new Image();
+    img.src = wine.image;
+    img.onload = () => {
         elements.wineName.innerHTML = wine.name.split(' ').join('<br/>');
         elements.wineDesc.textContent = wine.description;
         elements.winePrice.textContent = formatPrice(wine.price);
@@ -44,7 +48,15 @@ function renderFocusWine(wine, prevWine, nextWine) {
 
         activeInfo.style.opacity = '1';
         activePhoto.style.opacity = '1';
-    }, 300);
+    };
+    
+    // Safety timeout in case image fails to load
+    setTimeout(() => {
+        if (activePhoto.style.opacity === '0') {
+             activeInfo.style.opacity = '1';
+             activePhoto.style.opacity = '1';
+        }
+    }, 2000);
 }
 
 function updateCartUI(cart, onRemove) {
@@ -99,5 +111,58 @@ function renderTestimonials(testimonials) {
             <h6 class="testimonial-author">${t.name}</h6>
         </div>
     `).join('');
+}
+
+function renderFeaturedGrid(wines, onAddToCart) {
+    if (!elements.featuredGrid) return;
+    
+    elements.featuredGrid.innerHTML = wines.map(wine => `
+        <div class="product-card">
+            <div class="product-image-wrap">
+                <img src="${wine.image}" alt="${wine.name}" class="product-img">
+                <button class="btn-quick-add" data-id="${wine.id}">+</button>
+            </div>
+            <div class="product-info">
+                <span class="product-category">${wine.category}</span>
+                <h4 class="product-name font-serif italic">${wine.name}</h4>
+                <p class="product-price">${formatPrice(wine.price)}</p>
+            </div>
+        </div>
+    `).join('');
+
+    elements.featuredGrid.querySelectorAll('.btn-quick-add').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const id = parseInt(e.target.dataset.id);
+            onAddToCart(id);
+        });
+    });
+}
+
+function renderSearchResults(results, onSelect) {
+    const container = document.getElementById('searchResults');
+    if (!container) return;
+    
+    if (results.length === 0) {
+        container.innerHTML = '<div class="search-result-item"><span style="font-size: 10px; opacity: 0.5;">Nenhum vinho encontrado</span></div>';
+    } else {
+        container.innerHTML = results.map(wine => `
+            <div class="search-result-item" data-id="${wine.id}">
+                <img src="${wine.image}" class="search-result-img">
+                <div class="search-result-info">
+                    <p class="search-result-name">${wine.name}</p>
+                    <p class="search-result-price">${formatPrice(wine.price)}</p>
+                </div>
+            </div>
+        `).join('');
+
+        container.querySelectorAll('.search-result-item').forEach(item => {
+            item.addEventListener('click', () => {
+                onSelect(parseInt(item.dataset.id));
+                container.classList.remove('active');
+            });
+        });
+    }
+    
+    container.classList.add('active');
 }
 
